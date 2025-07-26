@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Visitor Appointments</h2>
+<table class="pastel-dashboard-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Reason</th>
+      <th>Document</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for visitor in appointments %}
+    <tr>
+      <td>{{ visitor.name }}</td>
+      <td>{{ visitor.email }}</td>
+      <td>{{ visitor.phone }}</td>
+      <td>{{ visitor.category }}</td>
+      <td>{{ visitor.date }}</td>
+      <td>{{ visitor.time }}</td>
+      <td>{{ visitor.reason }}</td>
+      <td>
+        {% if visitor.document %}
+          <a href="{{ visitor.document.url }}" target="_blank">View</a>
+        {% else %}
+          No file
+        {% endif %}
+      </td>
+      <td>
+        <form method="POST" action="{% url 'approve_visitor' visitor.id %}" style="display:inline;" >
+          {% csrf_token %}
+          <button type="submit" class="pastel-btn">Approve</button>
+        </form>
+
+        <form method="POST" action="{% url 'reject_visitor' visitor.id %}" style="display:inline;" >
+          {% csrf_token %}
+          <button type="submit" class="pastel-btn">Reject</button>
+        </form>
+
+        <form method="GET" action="{% url 'reschedule_form' visitor.id %}" style="display:inline;">
+          <button type="submit"  class="pastel-btn">Reschedule</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

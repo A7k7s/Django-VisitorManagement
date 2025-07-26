@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visitor Form</title>
+  <link rel="stylesheet" href="{% static 'assets/css/des.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+
+{% if success %}
+<div id="success-flag" style="display: none;"></div>
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'home' %}" id="visitorForm">
+  {% csrf_token %}
+  <h2>Visitor Appointment Form</h2>
+  <label>Name :</label>
+  <input type="text" name="name" required>
+
+  <label>Email :</label>
+  <input type="email" name="email" required>
+
+  <label>Upload Document (optional, PDF/Image, max 2MB)</label>
+  <input type="file" name="document" accept=".pdf,image/*">
+
+  <label>Category :</label>
+  <select name="category" required>
+    <option value="">Select</option>
+    <option value="Parent">Parent</option>
+    <option value="Student">Student</option>
+    <option value="Staff">Staff</option>
+    <option value="General">General</option>
+  </select>
+
+  <label>Staff:</label>
+  <select name="designation" required>
+    <option value="">Select</option>
+    <option value="HOD">HOD</option>
+    <option value="Associate Professor">Associate Professor</option>
+    <option value="Assistant Professor">Assistant Professor</option>
+  </select>
+
+  <label>Phone :</label>
+  <input type="tel" name="phone" pattern="[0-9]{10}" required placeholder="Enter 10-digit number">
+
+  <label>Date :</label>
+  <input type="date" name="date" id="dateField" required>
+
+  <label for="timeInput">Select Time (9:00 AM – 5:00 PM):</label>
+    <input type="text" id="timeInput" name="time" required>
+
+  <label>Reason :</label>
+  <textarea name="reason" rows="4" required></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script src="{% static 'assets/javascript/script.js' %}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Rescheduled Appointments</h2>
+<table class="pastel-dashboard-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Old Date</th>
+      <th>Old Time</th>
+      <th>New Date</th>
+      <th>New Time</th>
+      <th>Rescheduled On</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in rescheduled %}
+    <tr>
+      <td>{{ entry.visitor.name }}</td>
+      <td>{{ entry.visitor.email }}</td>
+      <td>{{ entry.visitor.date }}</td>
+      <td>{{ entry.visitor.time }}</td>
+      <td>{{ entry.new_date }}</td>
+      <td>{{ entry.new_time }}</td>
+      <td>{{ entry.rescheduled_at }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

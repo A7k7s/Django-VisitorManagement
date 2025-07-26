@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/tab.css' %}">
+</head>
+<body>
+
+  <div class="topnav">
+    <div>My College</div>
+    <div><a href="{% url 'login' %}" >Logout</a></div>
+  </div>
+
+  <div class="sidebar">
+    <a href="{% url 'appointments' %}">Appointments</a>
+    <a href="{% url 'approved' %}">Approved</a>
+    <a href="{% url 'rejected' %}">Rejected</a>
+    <a href="{% url 'rescheduled' %}">Rescheduled</a>
+  </div>
+
+  <div class="main-content">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+</html>
