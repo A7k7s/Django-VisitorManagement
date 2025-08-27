@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vsdb',
         'USER' : 'postgres',
-        'PASSWORD': 'dhanapost',
+        'PASSWORD': '',
         'HOST' : 'localhost',
 }
 }
