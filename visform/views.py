@@ -29,11 +29,11 @@ def home(request):
         visitor.save()
         
         if designation == 'HOD':
-            recipient = 'akshayaapaneer7@gmail.com'
+            recipient = ''
         elif designation == 'Associate Professor':
-            recipient = 'akshayaapanneerselvam@gmail.com'
+            recipient = ''
         elif designation == 'Assistant Professor':
-            recipient = 'akshayaaselvam7@gmail.com'
+            recipient = ''
         # Send email to visitor
         send_mail(
             subject="Your response has been submitted",
